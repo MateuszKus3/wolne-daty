@@ -1,0 +1,51 @@
+<html lang="pl">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div><select></select></div>
+    <p></p>
+    <script>
+      const p = document.querySelector('p');
+      const sel = document.querySelector('select');
+
+      const data = [
+        {
+          d: new Date(2022, 9, 14),
+          name: 'dzien nauczyciela',
+        },
+        {
+          d: new Date(2022, 10, 1),
+          name: 'wszystki swietych',
+        },
+        {
+          d: new Date(2021, 3, 28),
+          name: 'zakonczenie roku ez',
+        },
+        {
+          d: new Date(2022, 11, 06),
+          name: 'Mikolaj',
+        },
+      ];
+      const dzi = new Date();
+      data.forEach(function (elem) {
+        const option = document.createElement('option');
+        sel.appendChild(option);
+        option.innerHTML = elem.name;
+
+        option.addEventListener('click', function () {
+          const wynik = elem.d - dzi;
+          const wynik2 = parseInt(wynik / (1000 * 60 * 60 * 24));
+          if (wynik > 0) {
+            p.innerHTML = 'do wolnego zostalo ' + wynik2;
+          } else {
+            p.innerHTML = 'swieto minelo';
+          }
+        });
+      });
+    </script>
+  </body>
+</html>
